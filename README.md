@@ -17,6 +17,13 @@ The app does not remove or edit that profile and does not change any `pmset`
 preference. It requests display-only sleep with Apple's
 `pmset displaysleepnow` command when the idle timeout is reached.
 
+**Black Image Mode** is disabled by default. When enabled, an idle timeout
+temporarily sets each display's output transfer table to black rather than
+sleeping the displays. It produces a black image on LCD and OLED displays; LCD
+backlights can remain lit, while OLED pixels may switch off. Normal keyboard or
+mouse input restores each display's exact previous transfer table. A watchdog
+restores the ColorSync defaults if the app exits unexpectedly.
+
 The app honors macOS `PreventUserIdleDisplaySleep` assertions. Caffeine, video
 playback, presentations, and `caffeinate -d` therefore pause automatic display
 sleep. The menu shows when another app is preventing it. The explicit
@@ -27,9 +34,10 @@ sleep. The menu shows when another app is preventing it. The explicit
 Use the display icon in the menu bar to:
 
 - Enable or disable automatic display sleep.
+- Toggle **Black Image Mode** to show black instead of sleeping displays.
 - Select a preset timeout or enter a custom number of minutes.
 - See whether Caffeine or another app is currently preventing display sleep.
-- Turn the displays off immediately.
+- Sleep the displays or show black immediately, following the selected mode.
 - Open the activity log.
 
 Settings persist between launches.

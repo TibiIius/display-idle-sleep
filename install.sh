@@ -63,6 +63,9 @@ defaults write "$bundle_id" timeoutSeconds -float "$timeout"
 if ! defaults read "$bundle_id" enabled >/dev/null 2>&1; then
     defaults write "$bundle_id" enabled -bool true
 fi
+if ! defaults read "$bundle_id" blackImageMode >/dev/null 2>&1; then
+    defaults write "$bundle_id" blackImageMode -bool false
+fi
 
 plutil -create xml1 "$agent_path"
 plutil -insert Label -string "$label" "$agent_path"
